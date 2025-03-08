@@ -59,15 +59,15 @@ const draw = () => {
         const timeLasted = chrono - start
       
         if (lastTime !== chrono) {
-            const counting = Math.min(0.1 * timeLasted, 350)
+            const counting = Math.min(0.1 * timeLasted, 321)
             element.style.transform = `translateY(${counting}px)`
-            if (counting === 350) { 
+            if (counting === 321) { 
                 end = true;
                 setTimeout(() => draw(), 500)
             }
         }
       
-        if (timeLasted < 3500) {
+        if (timeLasted < 3210) {
             lastTime = chrono
             if (!end) {
                 window.requestAnimationFrame(iteration)
