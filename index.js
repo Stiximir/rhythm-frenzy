@@ -15,12 +15,13 @@ const draw = () => {
     end = false
     pointsAdded = false
     const gameboard = document.getElementById("game")
-    let oldCube = document.getElementById("cube")
-    if (oldCube != null) {
-        oldCube.remove()
+    for (let index = 1; index < 5; index++) {
+        let oldCube = document.getElementById("cube"+index)
+        if (oldCube != null) {
+            oldCube.remove()
+        }
     }
     let element = document.createElement("div")
-    element.id = "cube"
     element.style.width="25px"
     element.style.height = "25px"
     element.style.backgroundColor = "black"
@@ -30,18 +31,23 @@ const draw = () => {
     switch (number) {
         case 0:
             element.style.left = "63"
+            element.id = "cube1"
             break;
         case 1:
             element.style.left = "213"
+            element.id = "cube2"
             break;
         case 2:
             element.style.left = "363"
+            element.id = "cube3"
             break;
         case 3:
             element.style.left = "513"
+            element.id = "cube4"
             break;
         default:
             element.style.left = "63"
+            element.id = "cube1"
             break;
     }
     element.style.bottom = "100"
@@ -77,29 +83,88 @@ const draw = () => {
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
+        let element = document.getElementById("cube1")
+        if (element == null) {
+            for (let index = 1; index < 5; index++) {
+                let element = document.getElementById("cube"+index)
+                if (element != null) {
+                    end = true
+                    element.style.backgroundColor ="#db140d"
+                }
+            }
+        }
         if (end && !pointsAdded) {
-            let element = document.getElementById("cube")
             element.style.backgroundColor ="#14e32d"
             points = points + 15
             pointsAdded = true
             console.log(points)
         } else if (!pointsAdded)  {
-            let element = document.getElementById("cube")
             end = true
-            points = points - 15
-            pointsAdded = true
             element.style.backgroundColor ="#db140d"
-            console.log(points)
         }
     }
     if (event.key === "ArrowRight") {
-        console.log("sdqfqf")
+        let element = document.getElementById("cube4")
+        if (element == null) {
+            for (let index = 1; index < 5; index++) {
+                let element = document.getElementById("cube"+index)
+                if (element != null) {
+                    end = true
+                    element.style.backgroundColor ="#db140d"
+                }
+            }
+        }
+        else if (end && !pointsAdded) {
+            element.style.backgroundColor ="#14e32d"
+            points = points + 15
+            pointsAdded = true
+            console.log(points)
+        } else if (!pointsAdded)  {
+            end = true
+            element.style.backgroundColor ="#db140d"
+        }
     }
     if (event.key === "ArrowUp") {
-        console.log("sdqfqf")
+        let element = document.getElementById("cube2")
+        if (element == null) {
+            for (let index = 1; index < 5; index++) {
+                let element = document.getElementById("cube"+index)
+                if (element != null) {
+                    end = true
+                    element.style.backgroundColor ="#db140d"
+                }
+            }
+        }
+        else if (end && !pointsAdded) {
+            element.style.backgroundColor ="#14e32d"
+            points = points + 15
+            pointsAdded = true
+            console.log(points)
+        } else if (!pointsAdded)  {
+            end = true
+            element.style.backgroundColor ="#db140d"
+        }
     }
     if (event.key === "ArrowDown") {
-        console.log("sdqfqf")
+        let element = document.getElementById("cube3")
+        if (element == null) {
+            for (let index = 1; index < 5; index++) {
+                let element = document.getElementById("cube"+index)
+                if (element != null) {
+                    end = true
+                    element.style.backgroundColor ="#db140d"
+                }
+            }
+        }
+        else if (end && !pointsAdded) {
+            element.style.backgroundColor ="#14e32d"
+            points = points + 15
+            pointsAdded = true
+            console.log(points)
+        } else if (!pointsAdded)  {
+            end = true
+            element.style.backgroundColor ="#db140d"
+        }
     }
 });
 
