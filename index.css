@@ -83,3 +83,10 @@ p {
 #down {
     bottom: -50px; 
 }
+
+#score {
+    font-size: 1.5rem;
+    color: #FF4081;
+    margin-top: 55px;
+}
+
