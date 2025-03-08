@@ -76,8 +76,8 @@ const draw = () => {
         const timeLasted = chrono - start;
       
         if (lastTime !== chrono) {
-            const counting = Math.min(0.1 * timeLasted, 350);
-            element.style.transform = `translateY(${counting}px)`;
+            const counting = Math.min(0.1 * timeLasted, 350)
+            element.style.transform = `translateY(${counting}px)`
             if (counting === 350) { 
                 end = true;
                 setTimeout(() => draw(), 500);
@@ -85,7 +85,7 @@ const draw = () => {
         }
       
         if (timeLasted < 3500) {
-            lastTime = chrono;
+            lastTime = chrono
             if (!end) {
                 window.requestAnimationFrame(iteration);
             }
@@ -111,14 +111,13 @@ document.addEventListener("keydown", (event) => {
             }
         }
         if (end && !pointsAdded) {
-            element.style.backgroundColor = "#14e32d";
-            points = points + 15;
-            pointsAdded = true;
-            updateScore();
-            console.log(points);
-        } else if (!pointsAdded) {
-            end = true;
-            element.style.backgroundColor = "#db140d";
+            element.style.backgroundColor ="#14e32d"
+            points = points + 15
+            pointsAdded = true
+            console.log(points)
+        } else if (!pointsAdded)  {
+            end = true
+            element.style.backgroundColor ="#db140d"
         }
     }
     if (event.key === "ArrowRight") {
