@@ -49,3 +49,9 @@ p {
     background-color: #00E676;
     box-shadow: 0 0 10px #00E676;
 }
+
+#score {
+    font-size: 1.5rem;
+    color: #FF4081;
+    margin: 10px auto;
+}
