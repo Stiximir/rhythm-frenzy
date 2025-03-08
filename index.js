@@ -93,7 +93,7 @@ document.addEventListener("keydown", (event) => {
                 }
             }
         }
-        if (end && !pointsAdded) {
+        else if (end && !pointsAdded) {
             element.style.backgroundColor ="#14e32d"
             points = points + 15
             pointsAdded = true
