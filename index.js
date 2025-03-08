@@ -1,11 +1,18 @@
-let fini = false
+let end = false
 let points = 0
 let pointsAdded = true
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 const draw = () => {
-    let debut, tempsPrecedent
-    fini = false
+    if (!pointsAdded) {
+        points = points - 15
+        console.log(points)
+    }
+    let start, lastTime
+    end = false
     pointsAdded = false
     const gameboard = document.getElementById("game")
     let oldCube = document.getElementById("cube")
@@ -19,31 +26,48 @@ const draw = () => {
     element.style.backgroundColor = "black"
     element.style.position = "absolute"
     element.style.top = "0"
-    element.style.left = "63"
+    let number = getRandomInt(4)
+    switch (number) {
+        case 0:
+            element.style.left = "63"
+            break;
+        case 1:
+            element.style.left = "213"
+            break;
+        case 2:
+            element.style.left = "363"
+            break;
+        case 3:
+            element.style.left = "513"
+            break;
+        default:
+            element.style.left = "63"
+            break;
+    }
     element.style.bottom = "100"
     gameboard.appendChild(element)
     function iteration(chrono) {
-        if (debut === undefined) {
-            debut = chrono
+        if (start === undefined) {
+            start = chrono
         }
-        const ecoule = chrono - debut
+        const timeLasted = chrono - start
       
-        if (tempsPrecedent !== chrono) {
-            const compteur = Math.min(0.1 * ecoule, 350)
-            element.style.transform = `translateY(${compteur}px)`
-            if (compteur === 350) { 
-                fini = true;
-                setTimeout(() => draw(), 1000)
+        if (lastTime !== chrono) {
+            const counting = Math.min(0.1 * timeLasted, 350)
+            element.style.transform = `translateY(${counting}px)`
+            if (counting === 350) { 
+                end = true;
+                setTimeout(() => draw(), 500)
             }
         }
       
-        if (ecoule < 3500) {
-            tempsPrecedent = chrono
-            if (!fini) {
+        if (timeLasted < 3500) {
+            lastTime = chrono
+            if (!end) {
                 window.requestAnimationFrame(iteration)
             }
-            if (fini) {
-                setTimeout(() => draw(), 1000)
+            if (end) {
+                setTimeout(() => draw(), 500)
             }
         }
     }
@@ -53,7 +77,7 @@ const draw = () => {
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
-        if (fini && !pointsAdded) {
+        if (end && !pointsAdded) {
             let element = document.getElementById("cube")
             element.style.backgroundColor ="#14e32d"
             points = points + 15
@@ -61,7 +85,7 @@ document.addEventListener("keydown", (event) => {
             console.log(points)
         } else if (!pointsAdded)  {
             let element = document.getElementById("cube")
-            fini = true
+            end = true
             points = points - 15
             pointsAdded = true
             element.style.backgroundColor ="#db140d"
