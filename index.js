@@ -32,11 +32,10 @@ const draw = () => {
     let element = document.createElement("div");
     
     const randomWidth = 20 + Math.floor(Math.random() * 21);  
-    const randomHeight = 20 + Math.floor(Math.random() * 21); 
     element.style.width = randomWidth + "px";
-    element.style.height = randomHeight + "px";
+    element.style.height = "25px";
     
-    const maxRadius = Math.min(randomWidth, randomHeight) / 2;
+    const maxRadius = Math.min(randomWidth, 25) / 2;
     const randomBorderRadius = Math.floor(Math.random() * maxRadius);
     element.style.borderRadius = randomBorderRadius + "px";
 
